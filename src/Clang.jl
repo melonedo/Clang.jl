@@ -1,7 +1,5 @@
 module Clang
-
-include("shards/JLLEnvs.jl")
-using .JLLEnvs
+abc
 
 include("../lib/LibClang.jl")
 using .LibClang
