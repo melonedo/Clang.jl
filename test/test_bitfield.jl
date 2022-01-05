@@ -21,7 +21,6 @@ function build_libbitfield()
     run(config_cmd)
     run(build_cmd)
     run(install_cmd)
-    run(`julia-1.6 --version`)
 
     @info "Building libbitfield wrapper"
     args = get_default_args()
