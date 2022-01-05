@@ -11,10 +11,8 @@ function build_libbitfield()
         if Sys.iswindows()
             config_cmd = `$config_cmd -A win32`
         elseif Sys.islinux()
-            config_cmd = `$config_cmd -D CMAKE_C_FLAGS=-m32 -D CMAKE_CXX_FLAGS=-m32`
-            # Not actually working, so fail fast
-            @info "Can not build libbitfield on 32-bit linux"
-            error()
+            config_cmd = `$config_cmd -D CMAKE_C_FLAGS=-mnative -D CMAKE_CXX_FLAGS=-mnative`
+            # Not actually working on the CI though
         end
     end
     build_cmd = `$cmake --build $build_dir --config Debug`
@@ -23,6 +21,7 @@ function build_libbitfield()
     run(config_cmd)
     run(build_cmd)
     run(install_cmd)
+    run(`julia-1.6 --version`)
 
     @info "Building libbitfield wrapper"
     args = get_default_args()
