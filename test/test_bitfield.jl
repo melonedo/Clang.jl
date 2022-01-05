@@ -11,7 +11,7 @@ function build_libbitfield()
         if Sys.iswindows()
             config_cmd = `$config_cmd -A win32`
         elseif Sys.islinux()
-            config_cmd = `$config_cmd -D CMAKE_C_FLAGS=-mnative -D CMAKE_CXX_FLAGS=-mnative`
+            config_cmd = `$config_cmd -D CMAKE_C_FLAGS=-march=native -D CMAKE_CXX_FLAGS=-march=native`
             # Not actually working on the CI though
         end
     end
