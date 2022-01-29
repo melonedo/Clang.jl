@@ -51,7 +51,7 @@ end
 
 function build_libbitfield()
     success = true
-    try
+    # try
         # Compile binary
         if !build_libbitfield_binarybuilder() && !build_libbitfield_native()
             error("Could not build libbitfield binary")
@@ -72,10 +72,10 @@ function build_libbitfield()
         include("LibBitField.jl")
         m = Base.@invokelatest LibBitField.Mirror(10, 1.5, 1e6, -4, 7, 3)
         Base.@invokelatest LibBitField.toBitfield(Ref(m))
-    catch e
-        @warn "Building libbitfield failed: $e"
-        success = false
-    end
+    # catch e
+    #     @warn "Building libbitfield failed: $e"
+    #     success = false
+    # end
     return success
 end
 
